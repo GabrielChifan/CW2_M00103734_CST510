@@ -16,7 +16,7 @@ def register_user():
     password = input("Enter your password: ").strip()
     hashed_password = hash_password(password)
 
-    f = open("users.txt", "a")
+    f = open("DATA/users.txt", "a")
     try:
         f.write(f"{username}:{hashed_password}\n")
     finally:
@@ -29,7 +29,7 @@ def login_user():
     password = input("Enter your password: ").strip()
 
     try:
-        f = open("users.txt", "r")
+        f = open("DATA/users.txt", "r")
         try:
             lines = f.readlines()
         finally:

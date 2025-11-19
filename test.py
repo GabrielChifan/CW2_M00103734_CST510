@@ -1,8 +1,7 @@
-from app.users import add_user
 import sqlite3
-
-conn = sqlite3.connect("DATA/telligence_platform.db")
-
+import pandas as pd
+import main
+import login
 
 def create_user_table():
     curr = conn.cursor()
@@ -13,3 +12,9 @@ def create_user_table():
      ) """)
     curr.execute(sql)
     conn.commit()
+
+
+
+
+
+conn = sqlite3.connect("DATA/telligence_platform.db")
