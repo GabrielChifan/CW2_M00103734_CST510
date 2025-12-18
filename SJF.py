@@ -1,5 +1,6 @@
 import threading
 
+
 class Process:
     def __init__(self, process_number, burst_time):
         # Each process has a unique number and a burst time (CPU time required)
@@ -10,6 +11,7 @@ class Process:
         # Turnaround time: total time from submission to completion
         self.waiting_time = 0
         self.turn_around_time = 0
+
 
 class Scheduler:
     def __init__(self):
@@ -59,20 +61,21 @@ class Scheduler:
 
             for p in self.processes:
                 # Print each process in table row
-                 print(f"{p.process_number:<10}{p.burst_time:<15}{p.waiting_time:<15}{p.turn_around_time:<15}")
+                print(f"{p.process_number:<10}{p.burst_time:<15}{p.waiting_time:<15}{p.turn_around_time:<15}")
 
-                total_wt += p.waiting_time
-                total_tat += p.turn_around_time
+            total_wt += p.waiting_time
+            total_tat += p.turn_around_time
 
-            # Calculate averages
-            avg_wt = total_wt / len(self.processes)
-            avg_tat = total_tat / len(self.processes)
+        # Calculate averages
+        avg_wt = total_wt / len(self.processes)
+        avg_tat = total_tat / len(self.processes)
 
-            # Print averages in a clear format
-            print("\n" + "-" * 50)
-            print(f"{'Average Waiting Time:':<25}{avg_wt:.2f}")
-            print(f"{'Average Turnaround Time:':<25}{avg_tat:.2f}")
-            print("=" * 50)
+        # Print averages in a clear format
+        print("\n" + "-" * 50)
+        print(f"{'Average Waiting Time:':<25}{avg_wt:.2f}")
+        print(f"{'Average Turnaround Time:':<25}{avg_tat:.2f}")
+        print("=" * 50)
+
 
 class SchedulingThread(threading.Thread):
     def __init__(self, scheduler):
@@ -83,6 +86,7 @@ class SchedulingThread(threading.Thread):
     def run(self):
         # When the thread starts, it calculates waiting and turnaround times
         self.scheduler.calculate_times()
+
 
 if __name__ == "__main__":
     scheduler = Scheduler()

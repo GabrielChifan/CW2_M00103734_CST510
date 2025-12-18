@@ -19,14 +19,14 @@ with tab_login:
     login_username = st.text_input('Username', key='login_username')
     login_password = st.text_input('Password', type='password', key='login_password')
     if st.button('Log In'):
-         if user_login(conn, login_username, login_password):
+        if user_login(conn, login_username, login_password):
             st.success("Login successful!")
             st.session_state["logged_in"] = True
             st.success("You are now logged in!")
             st.session_state["username"] = login_username
             st.switch_page("pages/Dashboard.py")
-        else:
-            st.error("Invalid username or password. Please try again.")
+    else:
+        st.error("Invalid username or password. Please try again.")
 
 with tab_register:
     st.header('Register')
