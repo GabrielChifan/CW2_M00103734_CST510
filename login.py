@@ -43,11 +43,11 @@ def login_user():
         if not line or ":" not in line:
             continue
 
-        u_name, hash_str = line.split(":", 1)
+        u_name, hash = line.split(":", 1)
         u_name = u_name.strip()
-        hash_str = hash_str.strip()
+        hash = hash.strip()
 
-        if u_name == username and validate_password(password, hash_str):
+        if u_name == username and validate_password(password, hash):
             print(f"Welcome, {username}!")
             return
 
