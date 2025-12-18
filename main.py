@@ -1,5 +1,5 @@
-import bcrypt
-import login
+import sqlite3
+
 from login import register_user, login_user
 
 def main():
@@ -19,5 +19,7 @@ def main():
         else:
             print("Invalid choice.")
 
-if __name__ == "__main__":
-    main()
+conn = sqlite3.connect("DATA/intelligence_platform.db")
+conn.close()
+
+main()

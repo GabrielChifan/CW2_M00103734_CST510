@@ -16,7 +16,7 @@ def register_user():
     password = input("Enter your password: ").strip()
     hashed_password = hash_password(password)
 
-    f = open("users.txt", "a")
+    f = open("DATA/users.txt", "a")
     try:
         f.write(f"{username}:{hashed_password}\n")
     finally:
@@ -29,7 +29,7 @@ def login_user():
     password = input("Enter your password: ").strip()
 
     try:
-        f = open("users.txt", "r")
+        f = open("DATA/users.txt", "r")
         try:
             lines = f.readlines()
         finally:
@@ -43,11 +43,11 @@ def login_user():
         if not line or ":" not in line:
             continue
 
-        u_name, hash_str = line.split(":", 1)
+        u_name, hash = line.split(":", 1)
         u_name = u_name.strip()
-        hash_str = hash_str.strip()
+        hash = hash.strip()
 
-        if u_name == username and validate_password(password, hash_str):
+        if u_name == username and validate_password(password, hash):
             print(f"Welcome, {username}!")
             return
 
